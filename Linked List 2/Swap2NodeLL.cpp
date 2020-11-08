@@ -24,9 +24,12 @@ Sample Output 2 :
 /********************************************************** SOLUTION ****************************************************************/
 
 //SOLUTION
-node* swap_nodes(node *head,int i,int j) {
-    node *temp = head, *prev = NULL; 
-    node *node1 = NULL, *node2 = NULL, *node1_prev = NULL, *node2_prev = NULL;
+
+Node *swapNodes(Node *head, int i, int j)
+{
+    if(i==j) return head;
+	Node *temp = head, *prev = NULL; 
+    Node *node1 = NULL, *node2 = NULL, *node1_prev = NULL, *node2_prev = NULL;
     int pos = 0;
     while(temp != NULL) {
         if(pos == i) {
@@ -51,9 +54,10 @@ node* swap_nodes(node *head,int i,int j) {
     else {
         head = node1;
     }
-    node *temp1 = node2 -> next;
-    node2 -> next = node1 -> next; 
-    node1 -> next = temp1;
+    Node* temp1 = NULL;
+    if(node2) temp1 = node2 -> next;
+    if(node2 && node1) node2 -> next = node1 -> next; 
+    if(node1) node1 -> next = temp1;
     return head;
 }
 /*
